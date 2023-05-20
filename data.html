@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="date" placeholder="please select date" id="date">
+    <br>
+    <div style="margin-top: 3rem;">
+        <div>
+            <input type="radio" name="package" id="weekly" onclick="getWeeklyData()">
+            <label for="weekly">Weekly</label>
+        </div>
+
+        <div>
+            <input type="radio" name="package" id="monthly" onclick="getMonthlyData()">
+            <label for="monthly">Monthly</label>
+        </div>
+    </div>
+
+    <div style="display: flex;">
+        <div style="border: 1px solid silver;width: 25%;padding: 2rem;margin: 2rem;">
+            <h1> <span id="dayShow">weekly</span> days available</h1>
+            <h2>super package</h2>
+            <h3>more detail</h3>
+        </div>
+
+        <div style="border: 1px solid silver;width: 25%;padding: 2rem;margin: 2rem;">
+            <h1> <span id="MonthdayShow">monthly</span> days available</h1>
+            <h2>super package</h2>
+            <h3>more detail</h3>
+        </div>
+    </div>
+
+    <script>
+        const getWeeklyData = () => {
+            const selectedDate = new Date(document.getElementById('date').value);
+            if (isNaN(selectedDate)) {
+                alert('Please select a valid date');
+                document.getElementById('weekly').checked = false;
+            } else {
+                const daysToAdd = 6;
+                const TotlaDay = daysToAdd + 1;
+                const currentDate = new Date();
+                const nextDate = new Date(selectedDate);
+                nextDate.setDate(selectedDate.getDate() + daysToAdd);
+
+                if (nextDate.getMonth() !== selectedDate.getMonth()) {
+                    nextDate.setMonth(selectedDate.getMonth() + 1);
+                }
+
+                const FYear = nextDate.getFullYear();
+                const FMonth = nextDate.getMonth() + 1;
+                const FCDate = nextDate.getDate();
+                const setNewDates = `${FCDate}/${FMonth}/${FYear}`;
+                // console.log(setNewDates);
+                // alert(setNewDates, daysToAdd+1);
+
+                console.log(
+                   'date :' ,  setNewDates
+                );
+                console.log(
+                   'days :' ,  TotlaDay
+                );
+
+                document.getElementById('monthly').checked = false;
+                document.getElementById('dayShow').innerHTML=TotlaDay;
+            }
+        }
+
+
+        const getMonthlyData = () => {
+            const selectedDate = new Date(document.getElementById('date').value);
+            if (isNaN(selectedDate)) {
+                alert('Please select a valid date');
+                document.getElementById('monthly').checked = false;
+            } else {
+                const currentDate = new Date();
+                // const CFMonth = currentDate.getMonth() + 1
+                const daysToAdd = 29;
+                const MothTotalDatShow = daysToAdd + 1
+                const nextDate = new Date(selectedDate);
+                nextDate.setDate(selectedDate.getDate() + daysToAdd);
+
+                // console.log('CFMonth', CFMonth.getd);
+
+                if (nextDate.getMonth() !== selectedDate.getMonth()) {
+                    nextDate.setMonth(selectedDate.getMonth() + 1);
+                }
+
+                const FYear = nextDate.getFullYear();
+                const FMonth = nextDate.getMonth() + 1;
+                const FCDate = nextDate.getDate();
+                const setNewDates = `${FCDate}/${FMonth}/${FYear}`;
+                // console.log(setNewDates);
+                // alert(setNewDates);
+
+                console.log(
+                   'date :' ,  setNewDates
+                );
+                console.log(
+                   'days :' ,  MothTotalDatShow
+                );
+
+                document.getElementById('weekly').checked = false;
+                document.getElementById('MonthdayShow').innerHTML = MothTotalDatShow;
+
+            }
+        }
+    </script>
+
+</body>
+
+</html>

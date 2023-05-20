@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        input {
+            width: 96%;
+            padding: 0.4rem;
+            border-radius: 0.3rem;
+            border: 1px solid silver;
+            outline: none;
+        }
+
+        #main_div {
+            display: flex;
+        }
+
+        #main_div_1 {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Button trigger modal -->
+
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+            class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">vacation mode</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="main_div">
+                        <div id="main_div_1">
+                            <label for="startDate">to</label>
+                            <br>
+                            <input type="date" name="package" id="startDate">
+                        </div>
+
+                        <div id="main_div_1">
+                            <label for="endDate">from</label>
+                            <br>
+                            <input type="date" name="package" id="endDate">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="" onclick="VacationalMod()">Save
+                        changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const VacationalMod = () => {
+            let startDate = document.getElementById('startDate').value;
+            let endDate = document.getElementById('endDate').value;
+
+            // alert(startDate,endDate)
+            // alert(endDate)
+            startDate.value = null;
+            endDate.value = null;
+
+            document.getElementById('startDate').checked = true;
+
+            console.log(startDate);
+        }
+    </script>
+</body>
+
+</html>
